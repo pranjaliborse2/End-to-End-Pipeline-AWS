@@ -2,6 +2,7 @@
 This project demonstrates an end-to-end data engineering pipeline built on AWS, from raw data ingestion to interactive analytics and visualization. The goal is to efficiently transform and analyze NFIP (National Flood Insurance Program) policy data on the cloud using serverless AWS services.
 
 ##  Architecture Overview
+Data modelling --> Data Ingestion --> Data Cleaning and Transformation --> Analysis --> Visualization
 ![image](https://github.com/user-attachments/assets/912c8f7b-6dca-439d-9dcf-20eae0ba0fbe)
 + **Postgres and Python:** Creates a relational database from a consolidated Policies dataset, queries the data for regions of interest and stores them into different CSV files for ease of analysis.
 + **S3:** Stores raw CSV data and processed Parquet files for three states CA, NY and TX in partitioned folder structure adapted for query optimization in further analysis.
