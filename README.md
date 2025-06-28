@@ -1,4 +1,4 @@
-# NFIP Policies Data Pipeline on AWS
+# NFIP Policies Data Pipeline on AWS + Orchestration using Apache Airflow
 This project demonstrates an end-to-end data engineering pipeline built on AWS, from raw data ingestion to interactive analytics and visualization. The goal is to efficiently transform and analyze NFIP (National Flood Insurance Program) policy data on the cloud using serverless AWS services.
 
 ##  Architecture Overview
@@ -10,7 +10,8 @@ Data modelling --> Data Ingestion --> Data Cleaning and Transformation --> Analy
 + **AWS Lambda:** Triggers the Glue crawler upon new Parquet file uploads after ETL job and crawls them to Glue data catalog.
 + **AWS Athena:** Performs cost-optimized querying using SQL.
 + **Amazon QuickSight:** Visualizes insights directly from Athena queries.
-
++ **DAG Orchestration:** Automates the workflow using Airflow DAG by using AWS service operators locally via python
+  
 ## Pipeline Workflow
 + **Data Upload:**  Raw .dump file is converted to a readable format and uploaded to S3.
 + **ETL job:**  Glue ETL cleans and converts data to optimized Parquet format.
@@ -18,6 +19,8 @@ Data modelling --> Data Ingestion --> Data Cleaning and Transformation --> Analy
 + **Partitioning and Optimization:**  Data is partitioned by state (propertyState) for efficient Athena queries.
 + **Analysis in Athena:**  Query policies by region, year, coverage, and premiums. Identify trends and outliers across states.
 + **Visualization in QuickSight:**  Dashboard built to show trends in policy counts, premiums, and risk areas
+
+Developed an automated Workflow of Steps from initial Glue crawling to Analysis in Athena using Apache-Airflow DAG.
 ### Sample Athena query
 SELECT   
   propertyState,  
